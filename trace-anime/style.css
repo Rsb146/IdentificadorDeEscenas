@@ -1,0 +1,52 @@
+body {
+    background: linear-gradient(#cfcfcf, #9e9e9e);
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel {
+    background: #e6e6e6;
+    border-radius: 20px;
+    padding: 30px;
+    width: 350px;
+    box-shadow:
+        inset 2px 2px 5px #ffffff,
+        inset -2px -2px 5px #b0b0b0,
+        8px 8px 15px #7a7a7a;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+input[type="file"] {
+    margin: 15px 0;
+}
+
+button {
+    background: linear-gradient(#fdfdfd, #bcbcbc);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow:
+        2px 2px 5px #888,
+        inset 1px 1px 2px #fff;
+}
+
+button:active {
+    box-shadow:
+        inset 2px 2px 5px #888;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 10px;
+    background: #dcdcdc;
+    border-radius: 10px;
+    box-shadow: inset 2px 2px 5px #b0b0b0;
+}
