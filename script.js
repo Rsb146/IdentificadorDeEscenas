@@ -16,7 +16,7 @@ searchBtn.addEventListener("click", async () => {
     formData.append("image", file);
 
     try {
-        const response = await fetch("https://api.trace.moe/search", {
+        const response = await fetch("https://api.trace.moe/search?anilistInfo", {
             method: "POST",
             body: formData
         });
@@ -54,4 +54,5 @@ searchBtn.addEventListener("click", async () => {
         console.error(error);
     }
 });
+
 
