@@ -32,6 +32,8 @@ searchBtn.addEventListener("click", async () => {
 
         const minutos = Math.floor(anime.from / 60);
         const segundos = Math.floor(anime.from % 60);
+        const titulo = anime.anilist.title.english || anime.anilist.title.romaji || anime.anilist.title.native;
+
 
         resultDiv.innerHTML = `
             <img src="${anime.image}" alt="Frame detectado"
@@ -52,3 +54,4 @@ searchBtn.addEventListener("click", async () => {
         console.error(error);
     }
 });
+
