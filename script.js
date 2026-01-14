@@ -33,7 +33,7 @@ searchBtn.addEventListener("click", async () => {
         const minutos = Math.floor(anime.from / 60);
         const segundos = Math.floor(anime.from % 60);
 
-        const tituloNative  = anime.anilist?.title?.native  ?? "No disponible";
+        const tituloRomaji  = anime.anilist?.title?.romaji  ?? "No disponible";
 
         resultDiv.innerHTML = `
             <img src="${anime.image}" alt="Frame detectado"
@@ -44,7 +44,7 @@ searchBtn.addEventListener("click", async () => {
                     margin-bottom: 10px;
                  ">
 
-            <strong>Anime (Nativo):</strong> ${tituloNative}<br>
+            <strong>Anime (Romaji):</strong> ${tituloRomaji}<br>
             <strong>Episodio:</strong> ${anime.episode ?? "No disponible"}<br>
             <strong>Tiempo:</strong> ${minutos}:${segundos.toString().padStart(2, "0")}
         `;
@@ -54,3 +54,4 @@ searchBtn.addEventListener("click", async () => {
         console.error(error);
     }
 });
+
