@@ -23,7 +23,7 @@ searchBtn.addEventListener("click", async () => {
 
         const data = await response.json();
 
-        if (data.result.length === 0) {
+        if (!data.result || data.result.length === 0) {
             resultDiv.innerHTML = "No se encontró coincidencia 😢";
             return;
         }
@@ -32,8 +32,8 @@ searchBtn.addEventListener("click", async () => {
 
         const minutos = Math.floor(anime.from / 60);
         const segundos = Math.floor(anime.from % 60);
-        const titulo = anime.anilist.title.english || anime.anilist.title.romaji || anime.anilist.title.native;
 
+        const tituloNative  = anime.anilist?.title?.native  ?? "No disponible";
 
         resultDiv.innerHTML = `
             <img src="${anime.image}" alt="Frame detectado"
@@ -44,7 +44,7 @@ searchBtn.addEventListener("click", async () => {
                     margin-bottom: 10px;
                  ">
 
-            <strong>Anime:</strong> ${anime.anime}<br>
+            <strong>Anime (Nativo):</strong> ${tituloNative}<br>
             <strong>Episodio:</strong> ${anime.episode ?? "No disponible"}<br>
             <strong>Tiempo:</strong> ${minutos}:${segundos.toString().padStart(2, "0")}
         `;
@@ -54,4 +54,3 @@ searchBtn.addEventListener("click", async () => {
         console.error(error);
     }
 });
-
