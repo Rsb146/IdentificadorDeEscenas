@@ -15,9 +15,6 @@ imageInput.addEventListener("change", () => {
     resultDiv.innerHTML = `
         <p><strong>Imagen seleccionada:</strong></p>
         <img src="${previewURL}" alt="Vista previa">
-        <p style="text-align:center; opacity:0.8;">
-            Presiona <strong>Buscar anime</strong> para analizar
-        </p>
     `;
 });
 
