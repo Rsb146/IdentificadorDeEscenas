@@ -2,6 +2,25 @@ const imageInput = document.getElementById("imageInput");
 const searchBtn = document.getElementById("searchBtn");
 const resultDiv = document.getElementById("result");
 
+imageInput.addEventListener("change", () => {
+    const file = imageInput.files[0];
+
+    if (!file) {
+        resultDiv.innerHTML = "";
+        return;
+    }
+
+    const previewURL = URL.createObjectURL(file);
+
+    resultDiv.innerHTML = `
+        <p><strong>Imagen seleccionada:</strong></p>
+        <img src="${previewURL}" alt="Vista previa">
+        <p style="text-align:center; opacity:0.8;">
+            Presiona <strong>Buscar anime</strong> para analizar
+        </p>
+    `;
+});
+
 searchBtn.addEventListener("click", async () => {
     const file = imageInput.files[0];
 
@@ -16,10 +35,13 @@ searchBtn.addEventListener("click", async () => {
     formData.append("image", file);
 
     try {
-        const response = await fetch("https://api.trace.moe/search?anilistInfo", {
-            method: "POST",
-            body: formData
-        });
+        const response = await fetch(
+            "https://api.trace.moe/search?anilistInfo",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
 
         const data = await response.json();
 
@@ -36,17 +58,13 @@ searchBtn.addEventListener("click", async () => {
         const tituloRomaji  = anime.anilist?.title?.romaji  ?? "No disponible";
 
         resultDiv.innerHTML = `
-            <img src="${anime.image}" alt="Frame detectado"
-                 style="
-                    width: 100%;
-                    border-radius: 10px;
-                    box-shadow: inset 2px 2px 5px #b0b0b0;
-                    margin-bottom: 10px;
-                 ">
+            <img src="${anime.image}" alt="Frame detectado">
 
             <strong>Anime (Romaji):</strong> ${tituloRomaji}<br>
             <strong>Episodio:</strong> ${anime.episode ?? "No disponible"}<br>
-            <strong>Tiempo:</strong> ${minutos}:${segundos.toString().padStart(2, "0")}
+            <strong>Tiempo:</strong> ${minutos}:${segundos
+                .toString()
+                .padStart(2, "0")}
         `;
 
     } catch (error) {
@@ -54,5 +72,3 @@ searchBtn.addEventListener("click", async () => {
         console.error(error);
     }
 });
-
-
